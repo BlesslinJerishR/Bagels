@@ -24,8 +24,8 @@ You have {MAX_GUESSES} guesses to get it.
 """)
 
 
-NUM_DIGITS = 3
-MAX_GUESSES = 10
+NUM_DIGITS = 2 # No of Digits to guess
+MAX_GUESSES = 10 # Total number of guesses
 
 def game():
         while True: # Main loop the game
@@ -36,7 +36,7 @@ def game():
                         # Keep looping untill they enter a valid guess:
                         while len(guess) != NUM_DIGITS or not guess.isdecimal():
                                 print(f"Guess #{numGuesses}")
-                                guess = input('>')
+                                guess = input('> ')
                         clues = getClues(guess, secretNum)
                         print(clues)
                         numGuesses += 1
@@ -48,7 +48,7 @@ def game():
                                 print(f'The answer was {secretNum}')
                 # Ask Player if they want to play again
                 print("Do you want to play again ? [yes or no]")
-                if not input('>').lower().startswith('y'):
+                if not input('> ').lower().startswith('y'):
                         break
         print('Thanks for playing')
 
@@ -66,7 +66,7 @@ def getSecretNum():
 def getClues(guess, secretNum):
         """Returns a string with the pico, fermi, bagels clues for a guess and secret number pair."""
         if guess == secretNum:
-                return 'You got it!'
+                return 'You got it! Winner'
         clues = []
         for i in range(len(guess)):
                 if guess[i] == secretNum[i]:
